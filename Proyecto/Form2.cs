@@ -14,13 +14,14 @@ namespace Proyecto
 {
     public partial class Form2 : Form
     {
-        private Usuarios usuarios = new Usuarios();
+       // private Usuarios usuarios = new Usuarios();
         private int selectedIndex = -1;
         private bool clikMod = false;
-
+        private Usuarios usuarios;
         public Form2()
         {
             InitializeComponent();
+            usuarios = UsuariosData.ListaUsuarios; // Acceder a la lista de usuarios compartida
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -62,120 +63,6 @@ namespace Proyecto
             
         }
 
-        public class Usuario
-        {
-            public string id { get; set; }
-            public string nom { get; set; }
-            public string apell { get; set; }
-            public string correo { get; set; }
-            public string fechaN { get; set; }
-            public string contra { get; set; }
-
-
-            public Usuario(string id, string nom, string apell, string correo, string fechaN, string contra)
-            {
-                this.id = id;
-                this.nom = nom;
-                this.apell = apell;
-                this.correo = correo;
-                this.fechaN = fechaN;
-                this.contra = contra;
-            }
-            public Usuario()
-            {
-
-            }
-            public string MostrarU()
-            {
-                string textoUsr=this.id+" - "+this.nom+" - " +this.apell+" - "+this.correo+" - "+this.fechaN+" - "+this.contra;
-                
-                return textoUsr;
-            }
-        }
-
-        public class Usuarios
-        {
-            private ArrayList listaUsuarios;
-
-            public Usuarios()
-            {
-                listaUsuarios = new ArrayList();
-            }
-
-            public void AgregarUsuario(Usuario usuario)
-            {
-                listaUsuarios.Add(usuario);
-            }
-
-            public void EliminarUsuario(int indice)
-            {
-                if (indice >= 0 && indice < listaUsuarios.Count)
-                {
-                    listaUsuarios.RemoveAt(indice);
-                }
-            }
-
-            public bool BuscarU(int id)
-            {
-                
-                bool existe = false;
-                foreach (Usuario usuario in listaUsuarios)
-                {
-                    if (Convert.ToInt32(usuario.id) == id)
-                    {
-                        existe= true;
-                        break;
-                    }
-                }
-                return existe;
-            }
-
-            public bool BuscarPorCorr(string correo)
-            {
-
-                bool existe = false;
-                foreach (Usuario usuario in listaUsuarios)
-                {
-                    if (usuario.correo == correo)
-                    {
-                        existe = true;
-                        break;
-                    }
-                }
-                return existe;
-            }
-
-            public bool BuscarPorContra(string contra)
-            {
-                bool existe = false;
-                foreach (Usuario usuario in listaUsuarios)
-                {
-                    if (usuario.contra == contra)
-                    {
-                        existe = true;
-                        break; 
-                    }
-                }
-                return existe;
-            }
-
-            public Usuario ObtenerUsuario(int index)
-            {
-                if (index >= 0 && index < listaUsuarios.Count)
-                {
-                    return (Usuario)listaUsuarios[index];
-                }
-                return null;
-            }
-
-            public void ActualizarUsuario(int index, Usuario usrMod)
-            {
-                if (index >= 0 && index < listaUsuarios.Count)
-                {
-                    listaUsuarios[index] = usrMod;
-                }
-            }
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -214,12 +101,12 @@ namespace Proyecto
         private bool ValidarEntradas()
         {
             bool idCorrecto = true;
-            bool validar = true;
+            bool esValido = true;
             // Validar que el ID solo contenga números
             if (textID.Text != "" &!int.TryParse(textID.Text, out _))
             {
                 MessageBox.Show("El ID debe ser un numero");
-                validar= false;
+                esValido= false;
                 idCorrecto = false;
             }
 
@@ -233,37 +120,37 @@ namespace Proyecto
                 
                 
 
-                // Validar que el nombre y apellido no tengan más de 15 caracteres
+                // Validar que el nombre y apellido no tengan más de 50 caracteres
                 if (textNombre.Text.Length > 50 || textApellido.Text.Length > 50)
                 {
                     MessageBox.Show("El nombre y apellido no deben tener más de 15 caracteres.");
-                    validar= false;
+                    esValido= false;
                 }
 
                 // Validar que el correo tenga un formato válido
                 if (!Regex.IsMatch(textCorreo.Text, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
                 {
                     MessageBox.Show("El correo no tiene un formato valido.");
-                    validar= false;
+                    esValido= false;
                 }
 
-                // Validar que el ID no se repita (excepto si es el mismo usuario siendo modificado)
-                if (selectedIndex == -1 || (selectedIndex != -1 && Convert.ToInt32(usuarios.ObtenerUsuario(selectedIndex).id) != id))
+                // Validar que el ID no se repita si estoy creando uno nuevo
+                if (selectedIndex == -1 /*|| (selectedIndex != -1 && Convert.ToInt32(usuarios.ObtenerUsuario(selectedIndex).id) != id)*/)
                 {
                     if (usuarios.BuscarU(id))
                     {
                         MessageBox.Show("El ID ya existe. Por favor, elige otro ID.");
-                        validar= false;
+                        esValido= false;
                     }
                 }
 
-                // Validar que el correo no se repita y si esta el programa en modificacion
+                // Validar que el correo no se repita 
                 if (!clikMod)
                 {
                     if (usuarios.BuscarPorCorr(correo))
                     {
                         MessageBox.Show("Esta cuenta ya esta asociada a un usuario.");
-                        validar = false;
+                        esValido = false;
                     }
                 }
                 
@@ -272,19 +159,19 @@ namespace Proyecto
                 if (!DateTime.TryParseExact(textFecha.Text, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out _))
                 {
                     MessageBox.Show("La fecha de nacimiento debe tener el formato dd/MM/yyyy.");
-                    validar = false;
+                    esValido = false;
                 }
             }
             else
             {
                 MessageBox.Show("faltan datos o esta mal el id", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                validar = false;
+                esValido = false;
             }
                 
 
             
 
-            return validar;
+            return esValido;
         }
 
 

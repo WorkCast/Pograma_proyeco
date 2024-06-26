@@ -187,7 +187,7 @@ namespace Proyecto
             // Crear un Label para el contenido del post
             Label postLabel = new Label();
             
-            postLabel.Text = content;
+            postLabel.text = content;
             postLabel.AutoSize = true;
             postLabel.MaximumSize = new Size(postPanel.Width - 20, 0); // Ajustar el tamaño máximo del Label
             postLabel.Margin = new Padding(0, 0, 0, 10); // Margen inferior para separación
