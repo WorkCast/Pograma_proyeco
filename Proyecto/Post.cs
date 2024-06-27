@@ -13,7 +13,8 @@ namespace Proyecto
         public string text { get; set; }
         public ArrayList Comments { get; set; }
         public int likes { get; set; }
-        
+        public string dirImagen { get; set; }
+        public bool tieneImagen { get; set; }
 
         public Post(int id,string text)
         {
