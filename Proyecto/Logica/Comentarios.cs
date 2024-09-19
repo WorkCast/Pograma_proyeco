@@ -7,22 +7,9 @@ using System.Collections;
 
 namespace Proyecto
 {
-    public class Post
+    public class Comentarios
     {
-        public int id { get; set; }
-        public string text { get; set; }
-        public ArrayList Comments { get; set; }
-        public int likes { get; set; }
-        public string dirImagen { get; set; }
-        public bool tieneImagen { get; set; }
-
-        public Post(int id,string text)
-        {
-            this.id = id;
-            this.text = text;
-            Comments = new ArrayList();
-            likes = 0;
-        }
+        public ArrayList Comments { get; set; } = new ArrayList();
 
         public bool ExisteComentario(int id)
         {
@@ -31,7 +18,7 @@ namespace Proyecto
             {
                 if (com.id == id)
                 {
-                    existe=true;
+                    existe = true;
                 }
             }
             return existe;
@@ -40,11 +27,11 @@ namespace Proyecto
         {
             Comentario come = null;
             foreach (Comentario com in Comments)
-            { 
-                if (com.id==id)
+            {
+                if (com.id == id)
                 {
-                    come= com;
-                }             
+                    come = com;
+                }
             }
             return come;
         }
@@ -73,30 +60,9 @@ namespace Proyecto
             {
                 if (com == come)
                 {
-                    com.texto=text;
+                    com.texto = text;
                 }
             }
         }
-
-        public string Mostrar()
-        {
-            string coment="";
-            foreach (Comentario com in Comments)
-            {
-                coment += com.Mostrar();
-            }
-            return "{" + this.id + " - " + this.text + " - " + this.likes+ " "+ coment + "}";
-        }
-
-        public string MostrarSoloPost()
-        {
-            string coment = "";
-            foreach (Comentario com in Comments)
-            {
-                coment += com.Mostrar();
-            }
-            return this.id + " - " + this.text + " - " + this.likes;
-        }
-
     }
 }

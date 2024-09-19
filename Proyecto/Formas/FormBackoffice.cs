@@ -14,14 +14,18 @@ namespace Proyecto
     public partial class FormBackoffice : Form
     {
         private Posts posts;
+        Grupos grupos;
+        Usuarios usuarios;
         private int selectedIndexPost = -1;
         private int selectedIndexCom = -1;
         private Timer timer;
         public FormBackoffice()
         {
             InitializeComponent();
-            LoadPosts();
+            //LoadPosts();
             posts = PostData.ListaPosts;
+            grupos = GruposData.ListaGrupos;
+            usuarios = UsuariosData.ListaUsuarios;
             InicializarTimer();
         }
 
@@ -55,14 +59,11 @@ namespace Proyecto
         {
             listBoxPosts.Items.Clear();
             listBoxComments.Items.Clear();
-            foreach (Post post in Posts.GetPosts())
+            foreach (Post post in posts.GetPosts())
             {
                 listBoxPosts.Items.Add(post.MostrarSoloPost());
             }
-            labelId.Text = "Seleccione un post";
-            textBoxPostText.Text = "";
-            textBoxLikes.Text = "";
-            textBoxComment.Text = "";
+            
         }
 
         private void FormBackoffice_Load(object sender, EventArgs e)
@@ -79,11 +80,11 @@ namespace Proyecto
                 selectedIndexPost = listBoxPosts.SelectedIndex;
                 int postId = GetSelectedPostId();
                 labelId.Text = postId.ToString();
-                Post post = Posts.BuscarPostId(postId);
+                Post post = posts.BuscarPostId(postId);
                 textBoxPostText.Text = post.text;
                 textBoxLikes.Text = post.likes.ToString();
                 listBoxComments.Items.Clear();
-                foreach (Comentario com in post.Comments)
+                foreach (Comentario com in post.listaComentarios.Comments)
                 {
                     listBoxComments.Items.Add(com.Mostrar2());
                 }   
@@ -91,12 +92,10 @@ namespace Proyecto
         }
 
         private int GetSelectedPostId()
-        {
-                        
+        {        
                 string selectedPost = listBoxPosts.SelectedItem.ToString();
                 int colonIndex = selectedPost.IndexOf("-");
                 return int.Parse(selectedPost.Substring(0, colonIndex));
-                        
         }
 
         private int GetSelectedComentId()
@@ -137,7 +136,24 @@ namespace Proyecto
             else
             {
                 int postId = GetSelectedPostId();
-                Posts.DeletePost(postId);
+                foreach (Usuario us in usuarios.listaUsuarios)
+                {
+                    if (us.postsDelUsr.ExistePost(GetSelectedPostId()))
+                    {
+                        us.postsDelUsr.DeletePost(postId);
+                    }
+                }
+
+                foreach (Grupo gru in grupos.grupos)
+                {
+                    if (gru.postsGrupo.ExistePost(GetSelectedPostId()))
+                    {
+                        gru.postsGrupo.DeletePost(postId);
+                    }
+                    
+                }
+                
+                posts.DeletePost(postId);
                 LoadPosts();
                 selectedIndexPost = -1;
                 
@@ -161,7 +177,7 @@ namespace Proyecto
                 else
                 {
                     int postId = GetSelectedPostId();
-                    Posts.CambiarTextPost(postId, textBoxPostText.Text.Trim());
+                    posts.CambiarTextPost(postId, textBoxPostText.Text.Trim());
                     LoadPosts();
                     selectedIndexPost = -1;
                     
@@ -187,8 +203,8 @@ namespace Proyecto
                 {
                     Comentario com = new Comentario(posts.NuevoIdComentario(), textBoxComment.Text.Trim());
                     int postId = GetSelectedPostId();
-                    Post post = Posts.BuscarPostId(postId);
-                    post.AddComent(com);
+                    Post post = posts.BuscarPostId(postId);
+                    post.listaComentarios.AddComent(com);
                     LoadPosts();
                     selectedIndexPost = -1;
                     listBoxPosts.SelectedIndex = -1;
@@ -210,7 +226,7 @@ namespace Proyecto
                 int postId = GetSelectedPostId();
                 int comId = GetSelectedComentId();
                 //obtiene el usuario mediante su id para poder acceder a su lista de comentarios y borrarlo
-                Posts.BuscarPostId(postId).BorrarComent(comId);
+                posts.BuscarPostId(postId).listaComentarios.BorrarComent(comId);
                 //string comment = listBoxComments.SelectedItem.ToString();
                 //Posts.RemoveCommentFromPost(postId, comment); aca
                 LoadPosts();
@@ -232,7 +248,7 @@ namespace Proyecto
                 int newLikes;
                 if (int.TryParse(textBoxLikes.Text, out newLikes))
                 {
-                    Posts.UpdateLikes(postId, newLikes);
+                    posts.ActualizarLikes(postId, newLikes);
                     LoadPosts();
                 }
                 else

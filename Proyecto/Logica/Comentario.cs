@@ -10,7 +10,6 @@ namespace Proyecto
     {
         public int id { get; set; }
         public string texto { get; set; }
-
         public Comentario(int id, string text)
         {
             this.id = id;

@@ -16,7 +16,12 @@ namespace Proyecto
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new FormRegistro());
+            //Application.Run(new FormBackOfficeUsr());
+            //Application.Run(new FormIntereses());
+            //Application.Run(new Login());
+            //Application.Run(new Form1());
+
             //Application.Run(new Form2());
             //Application.Run(new FormBackoffice());
         }

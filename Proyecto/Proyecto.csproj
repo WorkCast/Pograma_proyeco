@@ -46,44 +46,148 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\..\vercion nueva\Form1.cs">
-      <SubType>Form</SubType>
-      <Link>Form1.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\vercion nueva\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-      <Link>Form1.Designer.cs</Link>
-    </Compile>
-    <Compile Include="Comentario.cs" />
-    <Compile Include="FormBackoffice.cs">
+    <Compile Include="Formas\FormAdministracion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormBackoffice.Designer.cs">
+    <Compile Include="Formas\FormAdministracion.Designer.cs">
+      <DependentUpon>FormAdministracion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\FormVerEventos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\FormVerEventos.Designer.cs">
+      <DependentUpon>FormVerEventos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\FormBackOfficeEventos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\FormBackOfficeEventos.Designer.cs">
+      <DependentUpon>FormBackOfficeEventos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\FormBackOficeGrupos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\FormBackOficeGrupos.Designer.cs">
+      <DependentUpon>FormBackOficeGrupos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Logica\Comentario.cs" />
+    <Compile Include="Formas\FormCrearEvento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\FormCrearEvento.Designer.cs">
+      <DependentUpon>FormCrearEvento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\FormCrearGrupo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\FormCrearGrupo.Designer.cs">
+      <DependentUpon>FormCrearGrupo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Logica\Comentarios.cs" />
+    <Compile Include="Logica\ComentariosData.cs" />
+    <Compile Include="Logica\Etiqueta.cs" />
+    <Compile Include="Formas\FormPostear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\FormPostear.Designer.cs">
+      <DependentUpon>FormPostear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Logica\Etiquetas.cs" />
+    <Compile Include="Logica\EtiquetasData.cs" />
+    <Compile Include="Logica\Evento.cs" />
+    <Compile Include="Logica\Eventos.cs" />
+    <Compile Include="Logica\EventosData.cs" />
+    <Compile Include="Logica\Grupo.cs" />
+    <Compile Include="Formas\FormIntereses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\FormIntereses.Designer.cs">
+      <DependentUpon>FormIntereses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Logica\GrupoActual.cs" />
+    <Compile Include="Logica\Grupos.cs" />
+    <Compile Include="Logica\GruposData.cs" />
+    <Compile Include="Logica\Intereses.cs" />
+    <Compile Include="Formas\FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\FormMuroGrupo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\FormMuroGrupo.Designer.cs">
+      <DependentUpon>FormMuroGrupo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\FormRegistro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\FormRegistro.Designer.cs">
+      <DependentUpon>FormRegistro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\FormBackoffice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\FormBackoffice.Designer.cs">
       <DependentUpon>FormBackoffice.cs</DependentUpon>
     </Compile>
-    <Compile Include="Post.cs" />
-    <Compile Include="PostData.cs" />
-    <Compile Include="Posts.cs" />
-    <Compile Include="Usuarios.cs" />
-    <Compile Include="Usuario.cs" />
-    <Compile Include="Form2.cs">
+    <Compile Include="Logica\Post.cs" />
+    <Compile Include="Logica\PostData.cs" />
+    <Compile Include="Logica\Posts.cs" />
+    <Compile Include="Logica\UsuarioActual.cs" />
+    <Compile Include="Logica\Usuarios.cs" />
+    <Compile Include="Logica\Usuario.cs" />
+    <Compile Include="Formas\FormBackOfficeUsr.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <Compile Include="Formas\FormBackOfficeUsr.Designer.cs">
+      <DependentUpon>FormBackOfficeUsr.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UsuariosData.cs" />
-    <EmbeddedResource Include="..\..\..\vercion nueva\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-      <Link>Form1.resx</Link>
+    <Compile Include="Logica\UsuariosData.cs" />
+    <Compile Include="Formas\FormVerGrupo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\FormVerGrupo.Designer.cs">
+      <DependentUpon>FormVerGrupo.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Formas\FormAdministracion.resx">
+      <DependentUpon>FormAdministracion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <EmbeddedResource Include="Formas\FormCrearEvento.resx">
+      <DependentUpon>FormCrearEvento.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormBackoffice.resx">
+    <EmbeddedResource Include="Formas\FormCrearGrupo.resx">
+      <DependentUpon>FormCrearGrupo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\FormBackOfficeUsr.resx">
+      <DependentUpon>FormBackOfficeUsr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\FormPostear.resx">
+      <DependentUpon>FormPostear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\FormIntereses.resx">
+      <DependentUpon>FormIntereses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\FormBackoffice.resx">
       <DependentUpon>FormBackoffice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\FormMuroGrupo.resx">
+      <DependentUpon>FormMuroGrupo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\FormVerEventos.resx">
+      <DependentUpon>FormVerEventos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\FormBackOfficeEventos.resx">
+      <DependentUpon>FormBackOfficeEventos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\FormBackOficeGrupos.resx">
+      <DependentUpon>FormBackOficeGrupos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -94,6 +198,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Formas\FormRegistro.resx">
+      <DependentUpon>FormRegistro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\FormVerGrupo.resx">
+      <DependentUpon>FormVerGrupo.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -107,5 +217,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -50,8 +50,10 @@ namespace Proyecto
             // listBoxPosts
             // 
             this.listBoxPosts.FormattingEnabled = true;
+            this.listBoxPosts.HorizontalScrollbar = true;
             this.listBoxPosts.Location = new System.Drawing.Point(488, 35);
             this.listBoxPosts.Name = "listBoxPosts";
+            this.listBoxPosts.ScrollAlwaysVisible = true;
             this.listBoxPosts.Size = new System.Drawing.Size(288, 173);
             this.listBoxPosts.TabIndex = 0;
             this.listBoxPosts.SelectedIndexChanged += new System.EventHandler(this.listBoxPosts_SelectedIndexChanged);
@@ -59,8 +61,10 @@ namespace Proyecto
             // listBoxComments
             // 
             this.listBoxComments.FormattingEnabled = true;
+            this.listBoxComments.HorizontalScrollbar = true;
             this.listBoxComments.Location = new System.Drawing.Point(488, 231);
             this.listBoxComments.Name = "listBoxComments";
+            this.listBoxComments.ScrollAlwaysVisible = true;
             this.listBoxComments.Size = new System.Drawing.Size(288, 173);
             this.listBoxComments.TabIndex = 1;
             this.listBoxComments.SelectedIndexChanged += new System.EventHandler(this.listBoxComments_SelectedIndexChanged);

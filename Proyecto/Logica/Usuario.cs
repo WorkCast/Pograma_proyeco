@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace Proyecto
 {
@@ -14,6 +15,9 @@ namespace Proyecto
         public string correo { get; set; }
         public string fechaN { get; set; }
         public string contra { get; set; }
+        
+        public Intereses intereses = new Intereses(null,null,null);
+        public Posts postsDelUsr = new Posts();
 
 
         public Usuario(string id, string nom, string apell, string correo, string fechaN, string contra)

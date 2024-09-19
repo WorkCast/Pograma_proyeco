@@ -1,7 +1,7 @@
 ﻿
 namespace Proyecto
 {
-    partial class Form2
+    partial class FormBackOfficeUsr
     {
         /// <summary>
         /// Required designer variable.
@@ -30,6 +30,10 @@ namespace Proyecto
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.listBoxPosts = new System.Windows.Forms.ListBox();
+            this.btnActualizar = new System.Windows.Forms.Button();
+            this.btnCargarPrueba = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.textContrasena = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -52,6 +56,10 @@ namespace Proyecto
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.listBoxPosts);
+            this.panel1.Controls.Add(this.btnActualizar);
+            this.panel1.Controls.Add(this.btnCargarPrueba);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.textContrasena);
             this.panel1.Controls.Add(this.label3);
@@ -72,8 +80,47 @@ namespace Proyecto
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 450);
+            this.panel1.Size = new System.Drawing.Size(1414, 450);
             this.panel1.TabIndex = 0;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(1164, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(87, 13);
+            this.label5.TabIndex = 24;
+            this.label5.Text = "Posts del usuario";
+            // 
+            // listBoxPosts
+            // 
+            this.listBoxPosts.FormattingEnabled = true;
+            this.listBoxPosts.HorizontalScrollbar = true;
+            this.listBoxPosts.Location = new System.Drawing.Point(1065, 28);
+            this.listBoxPosts.Name = "listBoxPosts";
+            this.listBoxPosts.ScrollAlwaysVisible = true;
+            this.listBoxPosts.Size = new System.Drawing.Size(288, 342);
+            this.listBoxPosts.TabIndex = 23;
+            // 
+            // btnActualizar
+            // 
+            this.btnActualizar.Location = new System.Drawing.Point(54, 385);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(75, 23);
+            this.btnActualizar.TabIndex = 22;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
+            // btnCargarPrueba
+            // 
+            this.btnCargarPrueba.Location = new System.Drawing.Point(162, 385);
+            this.btnCargarPrueba.Name = "btnCargarPrueba";
+            this.btnCargarPrueba.Size = new System.Drawing.Size(75, 23);
+            this.btnCargarPrueba.TabIndex = 21;
+            this.btnCargarPrueba.Text = "Cargar datos ";
+            this.btnCargarPrueba.UseVisualStyleBackColor = true;
+            this.btnCargarPrueba.Click += new System.EventHandler(this.btnCargarPrueba_Click);
             // 
             // button2
             // 
@@ -117,7 +164,7 @@ namespace Proyecto
             this.button1.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(714, 402);
+            this.button1.Location = new System.Drawing.Point(38, 28);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(31, 23);
             this.button1.TabIndex = 16;
@@ -220,22 +267,23 @@ namespace Proyecto
             // listUsuarios
             // 
             this.listUsuarios.FormattingEnabled = true;
+            this.listUsuarios.HorizontalScrollbar = true;
             this.listUsuarios.Location = new System.Drawing.Point(411, 28);
             this.listUsuarios.Name = "listUsuarios";
-            this.listUsuarios.Size = new System.Drawing.Size(351, 342);
+            this.listUsuarios.ScrollAlwaysVisible = true;
+            this.listUsuarios.Size = new System.Drawing.Size(617, 342);
             this.listUsuarios.TabIndex = 0;
             this.listUsuarios.SelectedIndexChanged += new System.EventHandler(this.listUsuarios_SelectedIndexChanged);
             // 
-            // Form2
+            // FormBackOfficeUsr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1414, 450);
             this.Controls.Add(this.panel1);
-            this.MaximumSize = new System.Drawing.Size(816, 489);
-            this.MinimumSize = new System.Drawing.Size(816, 489);
-            this.Name = "Form2";
+            this.Name = "FormBackOfficeUsr";
             this.Text = "Backoffice";
+            this.Load += new System.EventHandler(this.FormBackOfficeUsr_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -262,5 +310,9 @@ namespace Proyecto
         private System.Windows.Forms.TextBox textContrasena;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnCargarPrueba;
+        private System.Windows.Forms.Button btnActualizar;
+        private System.Windows.Forms.ListBox listBoxPosts;
+        private System.Windows.Forms.Label label5;
     }
 }

@@ -8,7 +8,8 @@ namespace Proyecto
 {
     public class Posts
     {
-        private static ArrayList posts = new ArrayList();
+        //private static ArrayList posts = new ArrayList();
+        public ArrayList posts { get; set; } = new ArrayList();
         public Random random = new Random();
 
         public void AddPost(Post post)
@@ -17,8 +18,10 @@ namespace Proyecto
             posts.Add(post);
         }
 
-        public static void DeletePost(int postId)
+        public void DeletePost(int postId)
         {
+            
+
             // Implementación para eliminar el post por Id
             foreach (Post post in posts)
             {
@@ -30,7 +33,7 @@ namespace Proyecto
             }
         }
 
-        public static Post BuscarPostId(int postId)
+        public Post BuscarPostId(int postId)
         {
             // Implementación para obtener un post por Id
             foreach (Post post in posts)
@@ -43,7 +46,7 @@ namespace Proyecto
             return null;
         }
 
-        public static void CambiarTextPost(int postId, string newText)
+        public void CambiarTextPost(int postId, string newText)
         {
             // Implementación para actualizar el texto de un post por Id
             foreach (Post post in posts)
@@ -56,10 +59,7 @@ namespace Proyecto
             }
         }
 
-        
-
-
-        public static void UpdateLikes(int postId, int newLikes)
+        public void ActualizarLikes(int postId, int newLikes)
         {
             // Implementación para actualizar los likes de un post por Id
             foreach (Post post in posts)
@@ -72,7 +72,7 @@ namespace Proyecto
             }
         }
 
-        public static ArrayList GetPosts()
+        public ArrayList GetPosts()
         {
             return posts;
         }
@@ -84,7 +84,7 @@ namespace Proyecto
                 Console.WriteLine(post.Mostrar());
             }
         }
-        public static bool ExistePost(int postId)
+        public bool ExistePost(int postId)
         {
             bool existe = false;
             foreach (Post post in posts)
@@ -112,7 +112,7 @@ namespace Proyecto
             bool existe = false;
             foreach (Post post in posts)
             {
-                existe = existe || post.ExisteComentario(id);
+                existe = existe || post.listaComentarios.ExisteComentario(id);
             }
             return existe;
         }
